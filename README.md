@@ -1,6 +1,6 @@
-dify-wsl2-deploy
+# dify-wsl2-deploy
 
-# Dify on WSL2 部署全过程
+# dify-wsl2-deploy全过程
 
 ## 这是什么
 
