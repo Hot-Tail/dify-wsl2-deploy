@@ -90,6 +90,7 @@ docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 - **本地**：`bge-m3:latest`（在普通笔记本上计算慢，易超时）
 - **云端**：硅基流动 `BAAI/bge-m3`（API Base: `https://api.siliconflow.cn/v1`，免费额度 1000万 tokens/月）
+- > 注意：使用硅基流动 Embedding 需自行注册并申请 API Key，本仓库不包含任何个人密钥。
 - **推荐**：使用云端 Embedding，检索速度从 7 秒降至 0.2 秒
 
 ### 工作流节点连线
@@ -195,7 +196,7 @@ Dify 社区版采用 **修改版 Apache License 2.0**，附加条件如下：
 
 MIT License
 
-Copyright (c) 2026 Hot-Tail
+Copyright (c) 2026 Author
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
