@@ -1,5 +1,3 @@
-# dify-wsl2-deploy
-
 # dify-wsl2-deploy全过程
 
 ## 这是什么
