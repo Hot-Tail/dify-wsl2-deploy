@@ -1,8 +1,24 @@
-# dify-wsl2-deploy
+dify-wsl2-deploy
 
 # Dify on WSL2 部署全过程
 
-在 Windows 10 LTSC + WSL2 (Ubuntu) 环境下，使用 Docker/Podman 部署 Dify 知识库平台，完成端口迁移（8001 → 8080）、RAG 工作流配置与踩坑记录。
+## 这是什么
+
+这是一个在 **Windows 10 LTSC + WSL2 (Ubuntu)** 环境下，使用 **Docker/Podman** 部署 **Dify 知识库平台**的完整操作记录。内容涵盖从源码获取、环境配置、容器启动，到 RAG 工作流搭建、端口迁移（8001 → 8080）以及常见踩坑与解决方案。
+
+## 解决了什么问题
+
+- **Windows 下部署 Dify 的门槛问题**：通过 WSL2 运行 Linux 容器，避免 Windows 原生环境的兼容性困扰。
+- **WSL2 端口访问不稳定**：通过固定 `localhost` 访问、配置 Windows 端口转发，解决 IP 变动与连接拒绝问题。
+- **本地算力不足**：将 Embedding 模型从本地 `bge-m3` 切换到云端 `BAAI/bge-m3`，检索耗时从 7 秒降至 0.2 秒。
+- **RAG 工作流踩坑**：记录了 Agent 死循环、Tavily JSON 解析失败、变量未定义等问题的排查与修复过程。
+- **部署后的长期维护**：给出容器自启动、定期备份、知识库文档规范等实用建议。
+
+## 怎么用
+
+下面按步骤操作即可。环境准备 → 部署 Dify → 配置 RAG 工作流 → 端口迁移 → 日常维护。每一步都附有命令与截图说明（文字版）。如遇问题，可查阅「踩坑记录」章节。
+
+---
 
 ## 环境准备
 
@@ -72,7 +88,7 @@ docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 ### Embedding 模型选择
 
-- **本地**：`bge-m3:latest`（i5-5200U 上计算慢，易超时）
+- **本地**：`bge-m3:latest`（在普通笔记本上计算慢，易超时）
 - **云端**：硅基流动 `BAAI/bge-m3`（API Base: `https://api.siliconflow.cn/v1`，免费额度 1000万 tokens/月）
 - **推荐**：使用云端 Embedding，检索速度从 7 秒降至 0.2 秒
 
